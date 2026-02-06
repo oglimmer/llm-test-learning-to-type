@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeFlow — Typing Trainer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 class="header__title">TypeFlow</h1>
+            <nav class="header__nav">
+                <div class="mode-switch" role="tablist" aria-label="Typing mode">
+                    <button class="mode-switch__btn mode-switch__btn--active" role="tab" aria-selected="true" data-mode="beginner">Beginner</button>
+                    <button class="mode-switch__btn" role="tab" aria-selected="false" data-mode="advanced">Advanced</button>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main">
+            <section class="lesson-nav" id="lessonNav">
+                <div class="lesson-nav__row">
+                    <label for="lessonSelect" class="sr-only">Select lesson</label>
+                    <select id="lessonSelect" class="lesson-nav__select"></select>
+                </div>
+                <p class="lesson-nav__desc" id="lessonDescription"></p>
+            </section>
+
+            <section class="text-selector" id="textSelector" hidden>
+                <button class="btn btn--sm" id="newTextBtn">New Text</button>
+            </section>
+
+            <section class="typing-area" id="typingArea" tabindex="0" role="application" aria-label="Typing practice area">
+                <p class="typing-area__prompt" id="typingPrompt">Start typing to begin...</p>
+                <div class="typing-area__text" id="textDisplay"></div>
+            </section>
+
+            <div class="stats" id="stats">
+                <div class="stats__item">
+                    <span class="stats__value" id="wpmValue">0</span>
+                    <span class="stats__label">WPM</span>
+                </div>
+                <div class="stats__item">
+                    <span class="stats__value" id="accuracyValue">100</span>
+                    <span class="stats__label">Accuracy %</span>
+                </div>
+                <div class="stats__item">
+                    <span class="stats__value" id="timeValue">0:00</span>
+                    <span class="stats__label">Time</span>
+                </div>
+                <div class="stats__item">
+                    <span class="stats__value" id="errorsValue">0</span>
+                    <span class="stats__label">Errors</span>
+                </div>
+            </div>
+
+            <div class="keyboard" id="keyboard" aria-hidden="true"></div>
+
+            <p class="finger-hint" id="fingerHint"></p>
+
+            <div class="actions">
+                <button class="btn" id="restartBtn">Restart</button>
+                <button class="btn btn--primary" id="nextBtn" hidden>Next Lesson</button>
+            </div>
+
+            <section class="results" id="results" hidden>
+                <h2 class="results__title">Session Complete</h2>
+                <div class="results__stats" id="resultsStats"></div>
+                <div class="results__details" id="resultsDetails"></div>
+                <div class="results__actions">
+                    <button class="btn" id="retryBtn">Try Again</button>
+                    <button class="btn btn--primary" id="continueBtn">Continue</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

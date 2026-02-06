@@ -1,0 +1,238 @@
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --surface-2: #f8fafc;
+  --text: #102033;
+  --muted: #586274;
+  --border: #d9e0e8;
+  --primary: #1362d6;
+  --primary-hover: #0f52b2;
+  --success: #1f7a4f;
+  --warn: #9a5a13;
+  --danger: #b3261e;
+  --shadow: 0 12px 30px rgba(11, 24, 40, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: linear-gradient(145deg, #edf2f6, #f8fbfd);
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.control-panel {
+  grid-column: span 4;
+}
+
+.practice-panel {
+  grid-column: span 8;
+}
+
+.metrics-panel {
+  grid-column: span 12;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 8px 0 18px;
+  color: var(--muted);
+}
+
+.mode-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mode-btn,
+.primary-btn,
+.secondary-btn {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.mode-btn {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.mode-btn.is-active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #ecf3ff;
+}
+
+.mode-btn:hover,
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-1px);
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+}
+
+.secondary-btn {
+  background: var(--surface-2);
+}
+
+.session-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.tips {
+  color: var(--muted);
+  background: var(--surface-2);
+  border-radius: 10px;
+  padding: 12px;
+  min-height: 48px;
+}
+
+.target-text {
+  margin-top: 10px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  font-family: "JetBrains Mono", monospace;
+  line-height: 1.7;
+  min-height: 110px;
+}
+
+.char-correct {
+  color: var(--success);
+}
+
+.char-wrong {
+  color: var(--danger);
+  text-decoration: underline;
+}
+
+.char-current {
+  background: #dfeaff;
+}
+
+.input-label {
+  display: block;
+  margin: 14px 0 8px;
+  font-weight: 600;
+}
+
+.typing-input {
+  width: 100%;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  font: 400 1rem/1.5 "JetBrains Mono", monospace;
+}
+
+.typing-input:focus {
+  outline: 2px solid #7faef6;
+  border-color: var(--primary);
+}
+
+.status {
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+.metrics-list {
+  list-style: none;
+  margin: 12px 0 16px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.metrics-list li {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--surface-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metrics-list span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.metrics-list strong {
+  font-size: 1.15rem;
+}
+
+.feedback-box {
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fcfdfe;
+}
+
+@media (max-width: 900px) {
+  .control-panel,
+  .practice-panel,
+  .metrics-panel {
+    grid-column: span 12;
+  }
+
+  .metrics-list {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .metrics-list {
+    grid-template-columns: 1fr;
+  }
+}

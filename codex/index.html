@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeFlow | 10-Finger Typing Trainer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel control-panel" aria-labelledby="session-title">
+        <h1 id="session-title">TypeFlow</h1>
+        <p class="subtitle">10-finger typing trainer for beginners and advanced users.</p>
+
+        <div class="mode-group" role="radiogroup" aria-label="Typing mode">
+          <button class="mode-btn is-active" data-mode="beginner" aria-pressed="true">Beginner</button>
+          <button class="mode-btn" data-mode="advanced" aria-pressed="false">Advanced</button>
+        </div>
+
+        <div class="session-actions">
+          <button id="startBtn" class="primary-btn">Start Session</button>
+          <button id="resetBtn" class="secondary-btn">Reset</button>
+        </div>
+
+        <div class="tips" aria-live="polite" id="modeHint"></div>
+      </section>
+
+      <section class="panel practice-panel" aria-labelledby="practice-title">
+        <h2 id="practice-title">Practice</h2>
+        <p id="targetText" class="target-text" aria-label="Text to type"></p>
+
+        <label for="typingInput" class="input-label">Type here</label>
+        <textarea
+          id="typingInput"
+          class="typing-input"
+          rows="5"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          disabled
+          placeholder="Press Start Session to begin"
+        ></textarea>
+
+        <p class="status" id="statusText" aria-live="polite">Choose a mode and start your session.</p>
+      </section>
+
+      <section class="panel metrics-panel" aria-labelledby="metrics-title">
+        <h2 id="metrics-title">Performance Feedback</h2>
+        <ul class="metrics-list">
+          <li><span>WPM</span><strong id="wpmValue">0</strong></li>
+          <li><span>Accuracy</span><strong id="accuracyValue">100%</strong></li>
+          <li><span>Errors</span><strong id="errorsValue">0</strong></li>
+          <li><span>Time</span><strong id="timeValue">0s</strong></li>
+        </ul>
+
+        <div class="feedback-box" id="feedbackBox">
+          Start a session to receive real-time coaching.
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
