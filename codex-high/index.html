@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeFlow | 10-Finger Typing Trainer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Typing Practice</p>
+        <h1>10-Finger Typing Trainer</h1>
+        <p class="subtle">
+          Train accuracy first, then speed. Switch between beginner and advanced
+          drills based on your level.
+        </p>
+      </header>
+
+      <section class="controls card" aria-label="Session controls">
+        <div class="mode-picker" role="group" aria-label="Choose skill level">
+          <button
+            id="beginner-mode"
+            class="mode-button is-active"
+            data-mode="beginner"
+            aria-pressed="true"
+          >
+            Beginner
+          </button>
+          <button
+            id="advanced-mode"
+            class="mode-button"
+            data-mode="advanced"
+            aria-pressed="false"
+          >
+            Advanced
+          </button>
+        </div>
+
+        <label class="duration-control" for="duration">
+          Session length
+          <select id="duration">
+            <option value="60">1 minute</option>
+            <option value="180" selected>3 minutes</option>
+            <option value="300">5 minutes</option>
+          </select>
+        </label>
+
+        <div class="control-actions">
+          <button id="start-btn" class="primary-btn" type="button">
+            Start Session
+          </button>
+          <button id="restart-btn" class="secondary-btn" type="button">
+            Restart
+          </button>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Live performance metrics">
+        <article class="stat card">
+          <p class="label">WPM</p>
+          <p id="wpm" class="value">0</p>
+        </article>
+        <article class="stat card">
+          <p class="label">Accuracy</p>
+          <p id="accuracy" class="value">100%</p>
+        </article>
+        <article class="stat card">
+          <p class="label">Errors</p>
+          <p id="errors" class="value">0</p>
+        </article>
+        <article class="stat card">
+          <p class="label">Time Left</p>
+          <p id="time-left" class="value">03:00</p>
+        </article>
+      </section>
+
+      <section class="practice card" aria-label="Typing practice area">
+        <div class="practice-top">
+          <p id="mode-description" class="mode-description"></p>
+          <p id="best-result" class="best-result"></p>
+        </div>
+
+        <div class="time-progress" aria-hidden="true">
+          <div id="time-progress-fill"></div>
+        </div>
+
+        <p id="text-display" class="text-display"></p>
+
+        <label for="typing-input" class="input-label">Type here</label>
+        <input
+          id="typing-input"
+          class="typing-input"
+          type="text"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          disabled
+        />
+
+        <div class="feedback-row">
+          <p id="finger-hint" class="finger-hint" aria-live="polite"></p>
+          <p id="live-feedback" class="live-feedback" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section id="summary" class="summary card hidden" aria-label="Session summary">
+        <h2>Session Summary</h2>
+        <div class="summary-grid">
+          <p>Net WPM: <strong id="summary-wpm">0</strong></p>
+          <p>Accuracy: <strong id="summary-accuracy">0%</strong></p>
+          <p>Characters: <strong id="summary-characters">0</strong></p>
+          <p>Best Streak: <strong id="summary-streak">0</strong></p>
+          <p>Consistency: <strong id="summary-consistency">0%</strong></p>
+          <p>Weak Keys: <strong id="summary-weak-keys">-</strong></p>
+        </div>
+        <ul id="summary-feedback" class="summary-feedback"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

@@ -10,6 +10,8 @@ create a web application. this is a 10 finger typing learning application. it sh
 
 claude: 11m41s using opus 4.6
 
-codex: 1m07s using gpt-5.3-codex
+codex: 1m07s using gpt-5.3-codex (default)
+
+codex-high: ??? using gpt-5.3-codex (xhigh)
 
 gemini: ??? using gemini 3
