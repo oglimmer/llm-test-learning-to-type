@@ -15,3 +15,5 @@ codex: 1m07s using gpt-5.3-codex (default)
 codex-high: ??? using gpt-5.3-codex (xhigh)
 
 gemini: ??? using gemini 3
+
+mistral: ca 4 min using mistral-medium-3.5[high]

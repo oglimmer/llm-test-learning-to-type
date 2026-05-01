@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeMaster - 10 Finger Typing</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">&#x2325;</span>
+                <h1>TypeMaster</h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-mode="beginner">Beginner</button>
+                <button class="nav-btn" data-mode="advanced">Advanced</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Mode Selection (shown initially) -->
+            <section class="mode-selection" id="modeSelection">
+                <div class="mode-cards">
+                    <div class="mode-card" data-mode="beginner">
+                        <div class="mode-icon">&#x1F4D6;</div>
+                        <h2>Beginner</h2>
+                        <p>Learn home row keys and build accuracy. Perfect for starting your touch typing journey.</p>
+                        <ul class="mode-features">
+                            <li>Home row focus (ASDF JKL;)</li>
+                            <li>Slow, controlled exercises</li>
+                            <li>Step-by-step progression</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="selectMode('beginner')">Start Beginner</button>
+                    </div>
+                    <div class="mode-card" data-mode="advanced">
+                        <div class="mode-icon">&#x1F525;</div>
+                        <h2>Advanced</h2>
+                        <p>Challenge yourself with complex text and speed drills. For experienced typists.</p>
+                        <ul class="mode-features">
+                            <li>Full keyboard coverage</li>
+                            <li>Speed and accuracy drills</li>
+                            <li>Complex word patterns</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="selectMode('advanced')">Start Advanced</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Typing Area (hidden initially) -->
+            <section class="typing-area" id="typingArea" style="display: none;">
+                <div class="typing-header">
+                    <div class="mode-indicator">
+                        <span class="mode-label" id="currentMode">Beginner</span>
+                        <span class="lesson-info" id="lessonInfo">Lesson 1: Home Row</span>
+                    </div>
+                    <div class="timer" id="timer">00:00</div>
+                </div>
+
+                <div class="text-display" id="textDisplay">
+                    <span class="char" data-index="0">a</span>
+                    <span class="char" data-index="1">s</span>
+                    <span class="char" data-index="2">d</span>
+                    <span class="char" data-index="3">f</span>
+                    <span class="char" data-index="4"> </span>
+                    <span class="char" data-index="5">j</span>
+                    <span class="char" data-index="6">k</span>
+                    <span class="char" data-index="7">l</span>
+                    <span class="char" data-index="8">;</span>
+                </div>
+
+                <div class="input-area">
+                    <textarea 
+                        id="typingInput" 
+                        class="typing-input" 
+                        placeholder="Start typing..."
+                        autofocus
+                        spellcheck="false"
+                        autocorrect="off"
+                        autocapitalize="off"
+                    ></textarea>
+                </div>
+
+                <div class="keyboard-guide" id="keyboardGuide">
+                    <div class="keyboard-row">
+                        <span class="key">`</span><span class="key">1</span><span class="key">2</span><span class="key">3</span><span class="key">4</span><span class="key">5</span><span class="key">6</span><span class="key">7</span><span class="key">8</span><span class="key">9</span><span class="key">0</span><span class="key">-</span><span class="key">=</span><span class="key backspace">Backspace</span>
+                    </div>
+                    <div class="keyboard-row">
+                        <span class="key">Tab</span><span class="key">Q</span><span class="key">W</span><span class="key">E</span><span class="key">R</span><span class="key">T</span><span class="key">Y</span><span class="key">U</span><span class="key">I</span><span class="key">O</span><span class="key">P</span><span class="key">[</span><span class="key">]</span><span class="key">\</span>
+                    </div>
+                    <div class="keyboard-row">
+                        <span class="key caps-lock">Caps Lock</span><span class="key">A</span><span class="key">S</span><span class="key">D</span><span class="key">F</span><span class="key">G</span><span class="key">H</span><span class="key">J</span><span class="key">K</span><span class="key">L</span><span class="key">;</span><span class="key">'</span><span class="key enter">Enter</span>
+                    </div>
+                    <div class="keyboard-row">
+                        <span class="key shift">Shift</span><span class="key">Z</span><span class="key">X</span><span class="key">C</span><span class="key">V</span><span class="key">B</span><span class="key">N</span><span class="key">M</span><span class="key">,</span><span class="key">.</span><span class="key">/</span><span class="key shift">Shift</span>
+                    </div>
+                    <div class="keyboard-row">
+                        <span class="key space">Space</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Area (hidden initially) -->
+            <section class="results-area" id="resultsArea" style="display: none;">
+                <div class="results-header">
+                    <h2>Lesson Complete!</h2>
+                    <p class="results-subtitle" id="resultsSubtitle"></p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">&#x1F552;</div>
+                        <div class="stat-value" id="timeStat">00:00</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#x1F4CA;</div>
+                        <div class="stat-value" id="wpmStat">0</div>
+                        <div class="stat-label">Words Per Minute</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#x2705;</div>
+                        <div class="stat-value" id="accuracyStat">100%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#x1F449;</div>
+                        <div class="stat-value" id="correctStat">0</div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">&#x274C;</div>
+                        <div class="stat-value" id="errorStat">0</div>
+                        <div class="stat-label">Errors</div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <h3>Your Performance</h3>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="accuracyBar">
+                            <div class="progress-fill" id="accuracyFill"></div>
+                        </div>
+                        <span id="accuracyText"></span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="speedBar">
+                            <div class="progress-fill" id="speedFill"></div>
+                        </div>
+                        <span id="speedText"></span>
+                    </div>
+                </div>
+
+                <div class="error-analysis" id="errorAnalysis" style="display: none;">
+                    <h3>Common Mistakes</h3>
+                    <div class="error-list" id="errorList"></div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="restartLesson()">Retry Lesson</button>
+                    <button class="btn btn-secondary" onclick="nextLesson()">Next Lesson</button>
+                    <button class="btn btn-tertiary" onclick="backToModeSelection()">Change Mode</button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>TypeMaster &copy; 2024 | Practice makes perfect</p>
+        </footer>
+    </div>
+
+    <!-- Settings Panel (Hidden) -->
+    <div class="settings-panel" id="settingsPanel" style="display: none;">
+        <div class="settings-content">
+            <h2>Settings</h2>
+            <div class="settings-option">
+                <label>Show Keyboard Guide</label>
+                <input type="checkbox" id="showKeyboard" checked>
+            </div>
+            <div class="settings-option">
+                <label>Highlight Errors</label>
+                <input type="checkbox" id="highlightErrors" checked>
+            </div>
+            <button class="btn btn-secondary" onclick="closeSettings()">Close</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
