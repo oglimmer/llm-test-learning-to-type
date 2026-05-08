@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LLM Test — Learning to Type</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --fg: #1c1c1e;
+        --muted: #6b6b70;
+        --bg: #fafafa;
+        --card: #fff;
+        --border: #e5e5ea;
+        --accent: #2563eb;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --fg: #f2f2f7;
+          --muted: #a1a1a6;
+          --bg: #0b0b0d;
+          --card: #161618;
+          --border: #2a2a2e;
+          --accent: #60a5fa;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: var(--fg);
+        background: var(--bg);
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 3rem 1.25rem 4rem;
+      }
+      h1 { font-size: 1.75rem; margin: 0 0 .25rem; }
+      .lede { color: var(--muted); margin: 0 0 2rem; }
+      .lede code { background: var(--card); padding: .15em .4em; border-radius: 4px; border: 1px solid var(--border); font-size: .85em; }
+      ul.projects { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+      li.project a {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color .15s, transform .15s;
+      }
+      li.project a:hover { border-color: var(--accent); transform: translateY(-1px); }
+      .name { font-weight: 600; }
+      .model { color: var(--muted); font-size: .9rem; }
+      footer { margin-top: 2.5rem; color: var(--muted); font-size: .85rem; }
+      footer a { color: inherit; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>LLM Test — Learning to Type</h1>
+      <p class="lede">
+        The same prompt — <em>"build a 10-finger typing trainer"</em> — given to several LLMs.
+        Each entry below is that model's unedited output.
+      </p>
+      <ul class="projects">
+        <li class="project"><a href="./claude/"><span class="name">claude</span><span class="model">Claude Opus 4.6</span></a></li>
+        <li class="project"><a href="./codex/"><span class="name">codex</span><span class="model">GPT-5.3-codex (default)</span></a></li>
+        <li class="project"><a href="./codex-high/"><span class="name">codex-high</span><span class="model">GPT-5.3-codex (xhigh)</span></a></li>
+        <li class="project"><a href="./gemini/"><span class="name">gemini</span><span class="model">Gemini 3</span></a></li>
+        <li class="project"><a href="./mistral/"><span class="name">mistral</span><span class="model">mistral-medium-3.5 (high)</span></a></li>
+        <li class="project"><a href="./ollama-gpt-oss_20b/"><span class="name">ollama-gpt-oss_20b</span><span class="model">gpt-oss 20B (local via Ollama)</span></a></li>
+      </ul>
+      <footer>
+        Source: <a href="https://github.com/oglimmer/llm-test-learning-to-type">github.com/oglimmer/llm-test-learning-to-type</a>
+      </footer>
+    </main>
+  </body>
+</html>
