@@ -36,7 +36,7 @@ jobs:
         run: |
           mkdir -p _site
           cp index.html _site/
-          for dir in claude codex codex-high mistral ollama-gpt-oss_20b; do
+          for dir in claude claude-4.7 codex codex-high mistral ollama-gpt-oss_20b; do
             cp -R "$dir" "_site/$dir"
           done
           cp -R gemini/dist _site/gemini

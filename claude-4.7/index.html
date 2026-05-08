@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TouchType — learn 10-finger typing</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E⌨%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">⌨</span>
+        <span class="brand-name">TouchType</span>
+      </div>
+
+      <div class="mode-toggle" role="tablist" aria-label="Mode">
+        <button
+          type="button"
+          role="tab"
+          class="mode-btn is-active"
+          data-mode="beginner"
+          aria-selected="true"
+        >
+          Beginner
+        </button>
+        <button
+          type="button"
+          role="tab"
+          class="mode-btn"
+          data-mode="advanced"
+          aria-selected="false"
+        >
+          Advanced
+        </button>
+      </div>
+    </header>
+
+    <main class="app">
+      <section class="stats" aria-label="Performance">
+        <div class="stat">
+          <div class="stat-value" id="wpm">0</div>
+          <div class="stat-label">WPM</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="accuracy">100<span class="unit">%</span></div>
+          <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="time">0<span class="unit">s</span></div>
+          <div class="stat-label">Time</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="errors">0</div>
+          <div class="stat-label">Errors</div>
+        </div>
+      </section>
+
+      <section class="lesson-bar" id="lessonBar" aria-label="Lesson">
+        <label class="lesson-label" for="lessonSelect">Lesson</label>
+        <select id="lessonSelect" class="lesson-select"></select>
+        <span class="lesson-hint" id="lessonHint"></span>
+      </section>
+
+      <section class="typing-card" aria-label="Typing area">
+        <div
+          id="textDisplay"
+          class="text-display"
+          tabindex="0"
+          role="textbox"
+          aria-multiline="true"
+          aria-label="Type the text shown"
+        ></div>
+        <p class="hint" id="startHint">Start typing to begin. Press <kbd>Esc</kbd> to restart.</p>
+      </section>
+
+      <section class="keyboard-wrap" aria-label="Keyboard guide">
+        <div class="keyboard" id="keyboard" aria-hidden="true"></div>
+        <div class="finger-legend" aria-hidden="true">
+          <span class="legend-item"><i class="dot f-pinky-l"></i>Left pinky</span>
+          <span class="legend-item"><i class="dot f-ring-l"></i>Left ring</span>
+          <span class="legend-item"><i class="dot f-middle-l"></i>Left middle</span>
+          <span class="legend-item"><i class="dot f-index-l"></i>Left index</span>
+          <span class="legend-item"><i class="dot f-thumb"></i>Thumb</span>
+          <span class="legend-item"><i class="dot f-index-r"></i>Right index</span>
+          <span class="legend-item"><i class="dot f-middle-r"></i>Right middle</span>
+          <span class="legend-item"><i class="dot f-ring-r"></i>Right ring</span>
+          <span class="legend-item"><i class="dot f-pinky-r"></i>Right pinky</span>
+        </div>
+      </section>
+
+      <section class="controls">
+        <button id="restartBtn" type="button" class="btn">Restart</button>
+        <button id="nextBtn" type="button" class="btn btn-primary">Next exercise</button>
+      </section>
+    </main>
+
+    <dialog id="resultsDialog" class="results">
+      <form method="dialog" class="results-inner">
+        <h2 class="results-title">Nice work</h2>
+        <div class="results-grid">
+          <div><div class="r-value" id="rWpm">0</div><div class="r-label">WPM</div></div>
+          <div><div class="r-value" id="rAccuracy">0%</div><div class="r-label">Accuracy</div></div>
+          <div><div class="r-value" id="rTime">0s</div><div class="r-label">Time</div></div>
+          <div><div class="r-value" id="rErrors">0</div><div class="r-label">Errors</div></div>
+        </div>
+        <p class="results-feedback" id="rFeedback"></p>
+        <menu class="results-actions">
+          <button value="restart" class="btn">Repeat</button>
+          <button value="next" class="btn btn-primary" autofocus>Next</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="lessons.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
